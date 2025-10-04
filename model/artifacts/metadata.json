@@ -1,0 +1,41 @@
+{
+  "model": "StackingClassifier + ROS (calibrated isotonic)",
+  "threshold": 0.5,
+  "test_metrics": {
+    "accuracy": 0.9296615792966157,
+    "roc_auc": 0.9746808588130315,
+    "pr_auc": 0.9558057906650027
+  },
+  "features": [
+    "orbital_period_days",
+    "transit_epoch_bjd",
+    "transit_duration_hours",
+    "transit_depth_ppm",
+    "planet_radius_re",
+    "equilibrium_temp_k",
+    "insolation_flux",
+    "impact_parameter",
+    "stellar_teff_k",
+    "stellar_radius_rsun",
+    "stellar_logg",
+    "transit_epoch_bjd_imputed",
+    "transit_duration_hours_imputed",
+    "transit_depth_ppm_imputed",
+    "stellar_teff_k_pred_std",
+    "stellar_radius_rsun_pred_std",
+    "planet_radius_re_pred_std",
+    "stellar_teff_k_imputed",
+    "stellar_radius_rsun_imputed",
+    "planet_radius_re_imputed",
+    "duration_over_period",
+    "duration_over_period_clipped",
+    "impact_parameter_pred_std",
+    "impact_parameter_imputed",
+    "equilibrium_temp_k_postfill_median",
+    "stellar_logg_postfill_median",
+    "stellar_teff_k_postfill_median",
+    "acc_grav_stellar_surface",
+    "duration_over_period_fe",
+    "log_transit_depth_ppm"
+  ]
+}
