@@ -1,1 +1,1 @@
-NASA SpaceApps Challenge<br>Exoplanets Detection
+<h1>NASA SpaceApps Challenge</h1><br>Exoplanets Detection
