@@ -4,7 +4,7 @@ import os
 # --- Configuration ---
 # Determine models directory
 base = os.path.abspath(os.getcwd())
-models_dir = os.path.join(base, 'models')
+models_dir = os.path.join(base, "..", 'models')
 # Check current directory's 'models' first
 if not os.path.exists(models_dir):
     # Check parent directory's 'models' if not found

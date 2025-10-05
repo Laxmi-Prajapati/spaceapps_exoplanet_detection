@@ -1,20 +1,20 @@
 Here's a technical explanation of the model's prediction based on the provided SHAP data:
 
-*   **Prediction:** The stacking ensemble model predicts a label of 0 (likely indicating "not an exoplanet") with a low probability of 0.031. This suggests high confidence in the negative classification.
+*   **Prediction:** The model predicts a label of 0 (likely indicating "not an exoplanet") with a low probability of 0.031. This suggests low confidence in the negative classification.
 
-*   **Key Drivers:** The top two features, `transit_duration_hours` and `transit_epoch_bjd`, dominate the prediction, contributing approximately 80% of the absolute SHAP values.
+*   **Key Drivers:** The top two features, `transit_duration_hours` and `transit_epoch_bjd`, contribute the most to the prediction, accounting for approximately 78% of the absolute SHAP value sum.
 
-*   **Transit Duration Influence:** A `transit_duration_hours` value of 2.1 hours *decreases* the probability of the exoplanet label (negative SHAP value). Shorter transit durations may be indicative of false positives or grazing transits.
+*   **Feature Effects:**
+    *   `transit_duration_hours` (value: 2.1) has a negative SHAP value (-0.101), suggesting that this relatively low transit duration pushes the prediction towards label 0. Shorter transit durations are less likely to be exoplanets.
+    *   `transit_epoch_bjd` (value: 2457000.12345) has a positive SHAP value (0.101), indicating that this epoch value pushes the prediction towards label 1 (exoplanet). This is counterintuitive and requires further investigation.
 
-*   **Transit Epoch Influence:** A `transit_epoch_bjd` value of 2457000.12345 *increases* the probability of the exoplanet label (positive SHAP value). The specific value of the transit epoch is less interpretable without further context, but its magnitude suggests it's an important feature learned by the model.
+*   **Secondary Influences:** `stellar_logg` (positive SHAP) and `stellar_mass_msun` (negative SHAP) have smaller but noticeable contributions. Higher `stellar_logg` and lower `stellar_mass_msun` values slightly favor label 1 and label 0, respectively.
 
-*   **Stellar Properties:** `stellar_logg` (4.38) increases the probability of exoplanet, while `stellar_mass_msun` (1.02) decreases it. These features likely help the model distinguish between different types of stars and their likelihood of hosting exoplanets.
+*   **Model Confidence Caveat:** The low prediction probability (0.031) indicates that the model is uncertain about this classification. The opposing effects of `transit_duration_hours` and `transit_epoch_bjd` likely contribute to this uncertainty.
 
-*   **Model Confidence Caveats:** The low predicted probability (0.031) suggests the model is relatively confident in its negative classification. However, the reliance on a few key features raises concerns about potential overfitting or sensitivity to noise in those features.
-
-*   **Potential Issues:** The model's reliance on `transit_epoch_bjd` is concerning, as it can be highly correlated with the observation period and may not generalize well to new datasets.
+*   **Potential Issues:** The positive SHAP value for `transit_epoch_bjd` is unexpected. It's crucial to investigate if this feature is behaving as expected or if there's a data anomaly or model bias associated with it.
 
 *   **Recommendations:**
-    1.  **Feature Interaction Analysis:** Investigate interactions between `transit_duration_hours` and `transit_epoch_bjd` to understand their combined effect.
-    2.  **Robustness Testing:** Evaluate the model's performance on datasets with different observation periods to assess the impact of `transit_epoch_bjd`.
-    3.  **Feature Engineering:** Explore alternative representations of transit timing information that are less sensitive to observation period, such as transit period or phase.
+    1.  **Investigate `transit_epoch_bjd`:** Analyze the distribution of `transit_epoch_bjd` values for both exoplanets and non-exoplanets in the training data to understand its relationship with the target variable. Check for data leakage or spurious correlations.
+    2.  **Feature Interaction Analysis:** Explore potential interactions between `transit_duration_hours` and `transit_epoch_bjd` or other features. These interactions might reveal non-linear relationships that the model isn't fully capturing.
+    3.  **Calibration Check:** Evaluate the model's calibration using a calibration curve. This will help determine if the predicted probabilities accurately reflect the model's confidence. If the model is poorly calibrated, consider using calibration techniques like Platt scaling or isotonic regression.
