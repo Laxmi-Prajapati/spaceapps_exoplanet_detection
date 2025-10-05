@@ -1,0 +1,9 @@
+pandas
+numpy
+json
+dotenv
+scikit-learn
+joblib
+shap
+requests
+google-genai
