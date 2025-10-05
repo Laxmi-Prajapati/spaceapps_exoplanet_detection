@@ -1,0 +1,79 @@
+{
+  "prompt": "<<<JSON>>>\n{\n  \"dataset\": \"unified_exoplanets_final_imputed.csv\",\n  \"model\": \"stacking ensemble (RF+GB+SVM+LR) with feature selection + scaling\",\n  \"prediction\": {\n    \"label\": 0,\n    \"probability\": 0.03146702288316962\n  },\n  \"quantitative_shap_top\": [\n    {\n      \"feature\": \"transit_duration_hours\",\n      \"value\": 2.1,\n      \"shap_value\": -0.09865322449108847,\n      \"abs_shap\": 0.09865322449108847,\n      \"pct_contrib\": 40.01334280044752\n    },\n    {\n      \"feature\": \"transit_epoch_bjd\",\n      \"value\": 2457000.12345,\n      \"shap_value\": 0.0986532244910883,\n      \"abs_shap\": 0.0986532244910883,\n      \"pct_contrib\": 40.01334280044745\n    },\n    {\n      \"feature\": \"stellar_logg\",\n      \"value\": 4.38,\n      \"shap_value\": 0.020732415067751465,\n      \"abs_shap\": 0.020732415067751465,\n      \"pct_contrib\": 8.408982427756728\n    },\n    {\n      \"feature\": \"stellar_mass_msun\",\n      \"value\": 1.02,\n      \"shap_value\": -0.02073241506775132,\n      \"abs_shap\": 0.02073241506775132,\n      \"pct_contrib\": 8.40898242775667\n    },\n    {\n      \"feature\": \"dec\",\n      \"value\": 45.789,\n      \"shap_value\": 0.002452945094921976,\n      \"abs_shap\": 0.002452945094921976,\n      \"pct_contrib\": 0.9949044591305316\n    },\n    {\n      \"feature\": \"radius_ratio_est\",\n      \"value\": 0.011,\n      \"shap_value\": -0.002452945094921921,\n      \"abs_shap\": 0.002452945094921921,\n      \"pct_contrib\": 0.9949044591305092\n    },\n    {\n      \"feature\": \"equilibrium_temp_k\",\n      \"value\": 1100.0,\n      \"shap_value\": 0.0014368249803280336,\n      \"abs_shap\": 0.0014368249803280336,\n      \"pct_contrib\": 0.5827703126653021\n    },\n    {\n      \"feature\": \"transit_depth_ppm\",\n      \"value\": 1300.0,\n      \"shap_value\": -0.0014368249803280023,\n      \"abs_shap\": 0.0014368249803280023,\n      \"pct_contrib\": 0.5827703126652894\n    }\n  ],\n  \"summary_stats\": {\n    \"prediction\": {\n      \"label\": 0,\n      \"probability\": 0.03146702288316962\n    },\n    \"num_reported_features\": 8,\n    \"total_abs_shap\": 0.2465508192681795,\n    \"positive_shap_sum\": 0.12327540963408977,\n    \"negative_shap_sum\": -0.12327540963408971\n  }\n}\n<<<END JSON>>>\n\nYou are a senior ML engineer. Given the quantitative SHAP analysis (JSON) and the sample feature values, produce a concise technical explanation (5-8 bullet points) describing why the model produced the prediction, include likely causes, model confidence caveats, and 3 concrete suggestions to validate or improve model reliability. Reference the top contributing features and their directional effects. Keep the explanation technical and targeted to a data-science audience.",
+  "structured": {
+    "dataset": "unified_exoplanets_final_imputed.csv",
+    "model": "stacking ensemble (RF+GB+SVM+LR) with feature selection + scaling",
+    "prediction": {
+      "label": 0,
+      "probability": 0.03146702288316962
+    },
+    "quantitative_shap_top": [
+      {
+        "feature": "transit_duration_hours",
+        "value": 2.1,
+        "shap_value": -0.09865322449108847,
+        "abs_shap": 0.09865322449108847,
+        "pct_contrib": 40.01334280044752
+      },
+      {
+        "feature": "transit_epoch_bjd",
+        "value": 2457000.12345,
+        "shap_value": 0.0986532244910883,
+        "abs_shap": 0.0986532244910883,
+        "pct_contrib": 40.01334280044745
+      },
+      {
+        "feature": "stellar_logg",
+        "value": 4.38,
+        "shap_value": 0.020732415067751465,
+        "abs_shap": 0.020732415067751465,
+        "pct_contrib": 8.408982427756728
+      },
+      {
+        "feature": "stellar_mass_msun",
+        "value": 1.02,
+        "shap_value": -0.02073241506775132,
+        "abs_shap": 0.02073241506775132,
+        "pct_contrib": 8.40898242775667
+      },
+      {
+        "feature": "dec",
+        "value": 45.789,
+        "shap_value": 0.002452945094921976,
+        "abs_shap": 0.002452945094921976,
+        "pct_contrib": 0.9949044591305316
+      },
+      {
+        "feature": "radius_ratio_est",
+        "value": 0.011,
+        "shap_value": -0.002452945094921921,
+        "abs_shap": 0.002452945094921921,
+        "pct_contrib": 0.9949044591305092
+      },
+      {
+        "feature": "equilibrium_temp_k",
+        "value": 1100.0,
+        "shap_value": 0.0014368249803280336,
+        "abs_shap": 0.0014368249803280336,
+        "pct_contrib": 0.5827703126653021
+      },
+      {
+        "feature": "transit_depth_ppm",
+        "value": 1300.0,
+        "shap_value": -0.0014368249803280023,
+        "abs_shap": 0.0014368249803280023,
+        "pct_contrib": 0.5827703126652894
+      }
+    ],
+    "summary_stats": {
+      "prediction": {
+        "label": 0,
+        "probability": 0.03146702288316962
+      },
+      "num_reported_features": 8,
+      "total_abs_shap": 0.2465508192681795,
+      "positive_shap_sum": 0.12327540963408977,
+      "negative_shap_sum": -0.12327540963408971
+    }
+  }
+}
