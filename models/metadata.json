@@ -1,0 +1,320 @@
+{
+  "model_info": {
+    "model_type": "StackingClassifier",
+    "base_models": [
+      "rf",
+      "gb",
+      "svm",
+      "lr"
+    ],
+    "meta_learner": "LogisticRegression",
+    "training_date": "2025-10-05T10:31:26.704522",
+    "training_time_seconds": 9.509815454483032,
+    "random_state": 42
+  },
+  "dataset_info": {
+    "total_samples": 8367,
+    "training_samples": 6693,
+    "test_samples": 1674,
+    "resampled_training_samples": 8996,
+    "original_features": 18,
+    "selected_features": 12,
+    "feature_selection_method": "F-score (SelectKBest)",
+    "top_k_features": 12
+  },
+  "selected_features": {
+    "feature_names": [
+      "transit_epoch_bjd",
+      "transit_duration_hours",
+      "transit_depth_ppm",
+      "equilibrium_temp_k",
+      "impact_parameter",
+      "stellar_teff_k",
+      "stellar_mass_msun",
+      "stellar_logg",
+      "acc_grav_stellar_surface",
+      "ra",
+      "dec",
+      "radius_ratio_est"
+    ],
+    "f_scores": {
+      "transit_epoch_bjd": 487.05202762161537,
+      "transit_duration_hours": 113.16673171147619,
+      "transit_depth_ppm": 317.0166016834701,
+      "equilibrium_temp_k": 656.6934707114893,
+      "impact_parameter": 571.6785509225474,
+      "stellar_teff_k": 284.2760568038592,
+      "stellar_mass_msun": 220.45348919798656,
+      "stellar_logg": 236.42512293017913,
+      "acc_grav_stellar_surface": 110.70825668821607,
+      "ra": 193.91322895538926,
+      "dec": 207.9576987425169,
+      "radius_ratio_est": 547.1094224644864
+    },
+    "feature_ranking": [
+      {
+        "feature": "equilibrium_temp_k",
+        "f_score": 656.6934707114893,
+        "p_value": 3.054096145586369e-138
+      },
+      {
+        "feature": "impact_parameter",
+        "f_score": 571.6785509225474,
+        "p_value": 2.6376385231223117e-121
+      },
+      {
+        "feature": "radius_ratio_est",
+        "f_score": 547.1094224644864,
+        "p_value": 2.2567531993311727e-116
+      },
+      {
+        "feature": "transit_epoch_bjd",
+        "f_score": 487.05202762161537,
+        "p_value": 3.0385127067049436e-104
+      },
+      {
+        "feature": "transit_depth_ppm",
+        "f_score": 317.0166016834701,
+        "p_value": 2.52252704824277e-69
+      },
+      {
+        "feature": "stellar_teff_k",
+        "f_score": 284.2760568038592,
+        "p_value": 1.691029335577813e-62
+      },
+      {
+        "feature": "stellar_logg",
+        "f_score": 236.42512293017913,
+        "p_value": 1.8533133914223287e-52
+      },
+      {
+        "feature": "stellar_mass_msun",
+        "f_score": 220.45348919798656,
+        "p_value": 4.327169726298255e-49
+      },
+      {
+        "feature": "dec",
+        "f_score": 207.9576987425169,
+        "p_value": 1.895049433996694e-46
+      },
+      {
+        "feature": "ra",
+        "f_score": 193.91322895538926,
+        "p_value": 1.7906805999755131e-43
+      },
+      {
+        "feature": "transit_duration_hours",
+        "f_score": 113.16673171147619,
+        "p_value": 3.210744950861488e-26
+      },
+      {
+        "feature": "acc_grav_stellar_surface",
+        "f_score": 110.70825668821607,
+        "p_value": 1.0871313635380554e-25
+      }
+    ]
+  },
+  "preprocessing": {
+    "scaling_method": "StandardScaler",
+    "resampling_method": "RandomOverSampler",
+    "resampling_info": {
+      "method": "RandomOverSampler",
+      "original_distribution": {
+        "0": 4498,
+        "1": 2195
+      },
+      "resampled_distribution": {
+        "0": 4498,
+        "1": 4498
+      },
+      "original_size": 6693,
+      "resampled_size": 8996
+    }
+  },
+  "hyperparameter_optimization": {
+    "cv_folds": 3,
+    "scoring_metric": "roc_auc",
+    "optimization_results": {
+      "rf": {
+        "best_score": 0.9871837843715542,
+        "best_params": {
+          "max_depth": null,
+          "min_samples_leaf": 1,
+          "min_samples_split": 2,
+          "n_estimators": 200
+        }
+      },
+      "gb": {
+        "best_score": 0.991232975765377,
+        "best_params": {
+          "learning_rate": 0.2,
+          "max_depth": 10,
+          "n_estimators": 200
+        }
+      },
+      "svm": {
+        "best_score": 0.9654278347005633,
+        "best_params": {
+          "C": 10,
+          "gamma": "scale",
+          "kernel": "rbf"
+        }
+      },
+      "lr": {
+        "best_score": 0.8965716474734299,
+        "best_params": {
+          "C": 10,
+          "penalty": "l1",
+          "solver": "liblinear"
+        }
+      }
+    },
+    "param_grids": {
+      "rf": {
+        "n_estimators": [
+          50,
+          100,
+          200
+        ],
+        "max_depth": [
+          10,
+          20,
+          null
+        ],
+        "min_samples_split": [
+          2,
+          5
+        ],
+        "min_samples_leaf": [
+          1,
+          2
+        ]
+      },
+      "gb": {
+        "n_estimators": [
+          50,
+          100,
+          200
+        ],
+        "learning_rate": [
+          0.01,
+          0.1,
+          0.2
+        ],
+        "max_depth": [
+          3,
+          6,
+          10
+        ]
+      },
+      "svm": {
+        "C": [
+          0.1,
+          1,
+          10
+        ],
+        "gamma": [
+          "scale",
+          "auto"
+        ],
+        "kernel": [
+          "rbf",
+          "linear"
+        ]
+      },
+      "lr": {
+        "C": [
+          0.1,
+          1,
+          10
+        ],
+        "penalty": [
+          "l1",
+          "l2"
+        ],
+        "solver": [
+          "liblinear",
+          "lbfgs"
+        ]
+      }
+    }
+  },
+  "performance_metrics": {
+    "training_metrics": {
+      "accuracy": 1.0,
+      "f1_score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "roc_auc": 1.0,
+      "avg_precision": 0.9999999999999999
+    },
+    "test_metrics": {
+      "accuracy": 0.8954599761051374,
+      "f1_score": 0.8366013071895425,
+      "precision": 0.8582375478927203,
+      "recall": 0.8160291438979964,
+      "roc_auc": 0.9636656547257639,
+      "avg_precision": 0.9279525699890876
+    },
+    "training_time_seconds": 9.509815454483032,
+    "confusion_matrix": [
+      [
+        1051,
+        74
+      ],
+      [
+        101,
+        448
+      ]
+    ],
+    "overfitting_analysis": {
+      "accuracy_gap": 0.10454002389486261,
+      "f1_gap": 0.1633986928104575,
+      "auc_gap": 0.03633434527423607
+    }
+  },
+  "deployment_info": {
+    "required_libraries": [
+      "pandas",
+      "numpy",
+      "scikit-learn",
+      "matplotlib",
+      "shap",
+      "imbalanced-learn"
+    ],
+    "python_version": ">=3.8",
+    "model_files": [
+      "stacking_classifier.pkl",
+      "scaler.pkl",
+      "feature_selector.pkl",
+      "ros_sampler.pkl",
+      "metadata.json"
+    ],
+    "input_features": [
+      "transit_epoch_bjd",
+      "transit_duration_hours",
+      "transit_depth_ppm",
+      "equilibrium_temp_k",
+      "impact_parameter",
+      "stellar_teff_k",
+      "stellar_mass_msun",
+      "stellar_logg",
+      "acc_grav_stellar_surface",
+      "ra",
+      "dec",
+      "radius_ratio_est"
+    ],
+    "output_classes": [
+      "Not Confirmed (0)",
+      "Confirmed (1)"
+    ],
+    "prediction_threshold": 0.5
+  },
+  "model_artifacts": {
+    "stacking_classifier": "Complete trained stacking ensemble",
+    "scaler": "StandardScaler fitted on training data",
+    "feature_selector": "SelectKBest selector for top features",
+    "ros_sampler": "RandomOverSampler for class balancing",
+    "selected_features": "List of selected feature names"
+  }
+}
